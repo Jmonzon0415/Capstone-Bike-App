@@ -1,0 +1,13 @@
+<h1> All Group Rides </h1>
+
+<% @gr.each do |ride| %>
+
+
+<h4>Name:</h4> <p><a href="/group_rides/<%= ride.id %>"><%= ride.name %></a> </p></h4>
+<h4> Ride Type:</h4> <p><%= ride.ride_type %></p>
+<h4>Created By:</h4> <p><%= ride.creator_name  %></p>
+<br>
+
+
+
+<% end %>
