@@ -2,8 +2,7 @@ class GroupRidesController < ApplicationController
   
   def index
     @gr = GroupRide.all 
-    
-  end
+    end
 
   
   def create 
@@ -17,7 +16,6 @@ class GroupRidesController < ApplicationController
       date: params[:date],
       creator_id: current_user.id,
        })
-
     redirect_to '/group_rides'
   end 
 
@@ -25,12 +23,19 @@ class GroupRidesController < ApplicationController
   def new 
   end 
 
+  def user_show_page
+    @rides = GroupRide.where(creator_id: current_user)
+  end 
+
+  def joined_rides_show
+    @ride = GroupRide.where 
+  end
+
 
 
   def show
-  
-  @sr = GroupRide.find_by(id: params[:id])  
-
+    @sr = GroupRide.find_by(id: params[:id])  
+    @users = @sr.users 
   end
 
 
@@ -52,7 +57,6 @@ class GroupRidesController < ApplicationController
       date: params[:date],
       creator_id: current_user.id,
        })
-
     redirect_to "/group_rides/#{@ride.id}"
   end 
 
@@ -60,9 +64,7 @@ class GroupRidesController < ApplicationController
   def destroy 
     @ride = GroupRide.find_by(id: params[:id])
     @ride.destroy
-
-    redirect_to '/'
-
+  redirect_to '/'
   end
 
 

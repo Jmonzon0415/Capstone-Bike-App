@@ -1,0 +1,2 @@
+module UserGroupRidesHelper
+end

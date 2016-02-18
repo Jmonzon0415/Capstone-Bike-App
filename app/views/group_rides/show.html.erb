@@ -1,14 +1,40 @@
 
-<h4><a href="/group_rides">Home</a></h4>
+<h4><a href="/">Home</a></h4>
+<h4><a href="/group_rides">All Rides</a></h4>
 
 <h1> <%= @sr.name %></h1>
-<h4>Ride Type: <%= @sr.ride_type %></h4>
-<h4>Ride Length: <%= @sr.length %> Miles </h4>
-<h4>When: <%= @sr.time %></h4>
-<h4>Description: <%= @sr.description %></h4>
-<h4> Made By: <%= @sr.creator_name %></h4>
-
-<h4><a href="/group_rides/<%= @sr.id %>/edit">Edit Ride</a></h4>
+  <h4>Ride Type: <%= @sr.ride_type %></h4>
+  <h4>Ride Length: <%= @sr.length %> Miles </h4>
+  <h4>When: <%= @sr.time %></h4>
+  <h4>Description: <%= @sr.description %></h4>
+  <h4> Made By: <%= @sr.creator_name %></h4>
 
 
- <h4>  <a data-confirm="Are you sure ?" data-method="delete" href="/group_rides/<%= @sr.id %>" rel= "nofollow"><div class= "delete">Delete</div> </a> </h4>
+<h4><a href="/"></a>Users Going on this ride: </h4>
+    <% @users.each do |user| %> 
+
+    <%= user.email %>
+    </br>
+    <% end %>
+    </br>
+
+    
+ 
+
+  <%= form_tag "/user_group_rides", method: :post do %>
+    <%= hidden_field_tag :group_ride_id, @sr.id %>
+    <%= submit_tag "Join Ride", class: "btn btn-success" %>
+  <% end %>
+
+   <%= form_tag "/user_group_rides/:id", method: :delete do %>
+    <%= hidden_field_tag :group_ride_id, @sr.id %>
+    <%= submit_tag "Leave Ride", class: "btn btn-success" %>
+  <% end %>
+
+
+<% if current_user == @sr.creator %>
+
+<h4><a href="/group_rides/<%= @sr.id %>/edit">Edit Ride</a></h4>  
+<h4>  <a data-confirm="Are you sure ?" data-method="delete" href="/group_rides/<%= @sr.id %>" rel= "nofollow"><div class= "delete">Delete</div> </a> </h4>
+
+<% end %>

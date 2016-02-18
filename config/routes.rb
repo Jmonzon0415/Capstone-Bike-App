@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+ 
   devise_for :users
   root 'profiles#index'
 
   get '/index' => 'profiles#index'
+  
   get '/group_rides' => 'group_rides#index'
   get '/group_rides/new' => 'group_rides#new' 
   post '/group_rides' => 'group_rides#create'
@@ -10,6 +12,11 @@ Rails.application.routes.draw do
   get 'group_rides/:id/edit' => 'group_rides#edit'
   patch 'group_rides/:id' => 'group_rides#update'
   delete 'group_rides/:id' => 'group_rides#destroy' 
- 
+
+  get '/users_ride' => 'group_rides#user_show_page'
+  
+  post '/user_group_rides' => 'user_group_rides#create'
+  delete '/user_group_rides/:id' => 'user_group_rides#destroy'
+
 
 end

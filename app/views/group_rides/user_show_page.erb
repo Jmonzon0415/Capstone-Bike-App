@@ -1,0 +1,20 @@
+<h4><a href="/">Home</a></h4>
+
+<h1>Your rides: </h1>
+
+<% @rides.each do |ride| %>
+
+
+<h4>Name:</h4> <p><a href="/group_rides/<%= ride.id %>"><%= ride.name %></a> </p></h4>
+<h4> Ride Type:</h4> <p><%= ride.ride_type %></p>
+<h4>Created By:</h4> <p><%= ride.creator_name  %></p>
+
+<h4><a href="/group_rides/<%= ride.id %>/edit">Edit Ride</a></h4>  
+
+<h4>  <a data-confirm="Are you sure ?" data-method="delete" href="/group_rides/<%= ride.id %>" rel= "nofollow"><div class= "delete">Delete</div> </a> </h4>
+
+<br>
+
+<% end %>
+
+
