@@ -1,14 +1,26 @@
 class UserGroupRidesController < ApplicationController
   
+  
+
+
   def create 
-    UserGroupRide.create({group_ride_id: params[:group_ride_id], user_id: current_user.id })
-    redirect_to "/group_rides"
+    UserGroupRide.create({group_ride_id: params[:group_ride_id], user_id: current_user.id, status: "Joined"  })
+    redirect_to "/user_group_rides"
   end
 
-  def destroy
-    @joined_ride = UserGroupRide.find_by(id: params[:id])
-    @joined_ride.destroy
-    redirect_to "/group_rides"
+  
+  def index  
+      @joined_ride = UserGroupRide.where( status: "Joined", user_id: current_user.id )
   end 
+
+
+
+  def destroy
+    @joined_ride = UserGroupRide.find_by(status: "Joined", user_id: current_user.id)
+    @joined_ride.destroy
+    redirect_to "/user_group_rides"
+  end
+
+   
 
 end

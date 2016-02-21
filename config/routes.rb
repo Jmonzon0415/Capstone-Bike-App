@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
  
   devise_for :users
-  root 'profiles#index'
+  root 'users#index'
 
-  get '/index' => 'profiles#index'
+  get '/index' => 'users#index'
   
   get '/group_rides' => 'group_rides#index'
   get '/group_rides/new' => 'group_rides#new' 
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/users_ride' => 'group_rides#user_show_page'
   
   post '/user_group_rides' => 'user_group_rides#create'
+  get '/user_group_rides' => 'user_group_rides#index'
   delete '/user_group_rides/:id' => 'user_group_rides#destroy'
 
 

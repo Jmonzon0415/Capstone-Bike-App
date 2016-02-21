@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214211308) do
+ActiveRecord::Schema.define(version: 20160221182848) do
 
   create_table "group_rides", force: :cascade do |t|
     t.datetime "created_at",                null: false
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 20160214211308) do
   end
 
   create_table "user_group_rides", force: :cascade do |t|
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id",       limit: 4
     t.integer  "group_ride_id", limit: 4
+    t.string   "status",        limit: 255
   end
 
   create_table "users", force: :cascade do |t|
