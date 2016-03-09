@@ -13,5 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
+//= require theme/bootstrap
+//= require theme/contact_me
+//= require theme/jquery
+//= require theme/background
+//= require theme/core
+//= require theme/transition
+//= require theme/cbpAnimatedHeader
+//= require theme/classie
+//= require theme/jqBootstrapValidation
+//= require theme/jquery.easing.min
+//= require theme/jquery.magnific-popup
+//= require theme/jquery.mixitup
+//= require theme/owl.carousel
+//= require theme/retina
+//= require theme/wow
+//= require theme/vitality
+//= require angular
+//= require app
 //= require_tree .
+
+
+

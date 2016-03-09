@@ -1,46 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple icons</title>
+  </head>
 
-<h4><a href="/">Home</a></h4>
-<h4><a href="/group_rides">All Rides</a></h4>
+<body background="/assets/bike.jpg">
 
-<h1> <%= @sr.name %></h1>
-  <h4>Ride Type: <%= @sr.ride_type %></h4>
-  </br>
-  <h4>Ride Length: <%= @sr.length %> Miles </h4>
-  </br>
-  <h4>When: <%= @sr.time.strftime("%I:%M%p") %></h4>
-  <h4>Date: <%= @sr.date %> </h4>
+  
 
-  </br>
-  <h4>Description: <%= @sr.description %></h4>
-  </br>
-  <h4> Made By: <%= @sr.creator_name %></h4>
+  <div class="show-ride" >
+  <h1> <%= @sr.name %></h1>
+    <h4>Ride Type: <%= @sr.ride_type %></h4>
+    </br>
+    <h4>Ride Length: <%= @sr.length %> Miles </h4>
+    </br>
+    <h4>When: <%= @sr.time.strftime("%I:%M%p") %></h4>
+    <h4>Date: <%= @sr.date.strftime("%B %e, %Y") %> </h4>
+
+    </br>
+    <h4>Description: <%= @sr.description %></h4>
+    <h4>Location: <%= @sr.address %> </h4>
+    </br>
+    <h4> Made By: <%= @sr.creator_name %></h4>
    </br>
 
 
-<h4><a href="/"></a>Users Going on this ride: </h4>
-    <% @users.each do |user| %> 
+    <h4><a href="/"></a>Users Going on this ride: </h4>
+      <% @users.each do |user| %> 
 
-    <%= user.email %>
-    </br>
-    <% end %>
-    </br>
+      <%= user.email %>
+        </br>
+      <% end %>
+      </br>
 
     
- <%= form_tag "/user_group_rides", method: :post do %>
+
+
+    
+    <%= form_tag "/user_group_rides", method: :post do %>
     <%= hidden_field_tag :group_ride_id, @sr.id %>
     <%= submit_tag "Join Ride", class: "btn btn-success" %>
-  <% end %>
+      <% end %>
 
-</br>
+    </br>
 
- <%= form_tag "/user_group_rides/:id", method: :delete do %>
+    <%= form_tag "/user_group_rides/:id", method: :delete do %>
     <%= hidden_field_tag :group_ride_id, @sr.id %>
     <%= submit_tag "Leave Ride", class: "btn btn-danger" %>
-  <% end %>
-   
+      <% end %>
 
-
-
+  </br>
 
 <% if current_user == @sr.creator %>
 
@@ -48,3 +59,43 @@
 <h4>  <a data-confirm="Are you sure ?" data-method="delete" href="/group_rides/<%= @sr.id %>" rel= "nofollow"><div class= "delete">Delete</div> </a> </h4>
 
 <% end %>
+
+</div>
+
+
+
+  
+    <div id="map"></div>
+    <script>
+
+      // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+      // Australia.
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: {lat:<%= @sr.latitude %> , lng:<%= @sr.longitude %> }
+        
+        });
+
+        var image = 'https://maps.gstatic.com/mapfiles/ms2/micons/cycling.png';
+        var bikeMarker = new google.maps.Marker({
+          position: {lat: <%= @sr.latitude %> , lng:<%= @sr.longitude %> },
+          map: map,
+          icon: image
+
+        });
+      var bikeLayer = new google.maps.BicyclingLayer();
+      bikeLayer.setMap(map);
+
+      var styles = [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#000000"},{"lightness":40}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#000000"},{"lightness":16}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"lightness":17},{"weight":1.2}]},{"featureType":"administrative","elementType":"labels.text","stylers":[{"gamma":"1.00"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#7d8be9"}]},{"featureType":"administrative.locality","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"administrative.neighborhood","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"landscape","elementType":"all","stylers":[{"visibility":"simplified"},{"color":"#28292d"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#28292d"},{"lightness":"0"}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"visibility":"off"},{"saturation":"0"}]},{"featureType":"landscape.man_made","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"saturation":"0"},{"gamma":"1"},{"color":"#c4c8de"},{"weight":"1"},{"lightness":"0"}]},{"featureType":"landscape.natural.landcover","elementType":"all","stylers":[{"visibility":"on"}]},{"featureType":"landscape.natural.terrain","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#28292d"},{"lightness":"0"},{"saturation":"0"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#e9d07d"},{"visibility":"on"},{"weight":"0.49"},{"gamma":"1."}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#bcc0a7"},{"weight":"1.00"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"weight":"1.10"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"weight":"0.01"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"weight":"1.00"},{"lightness":"12"},{"saturation":"-53"},{"gamma":"0.91"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"weight":"0.01"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#323029"},{"lightness":"-6"},{"visibility":"on"},{"gamma":"1.98"},{"weight":"0.65"},{"saturation":"-19"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"weight":"0.01"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"lightness":19}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#28292d"},{"lightness":"8"},{"visibility":"on"}]}]
+
+
+      map.setOptions({styles: styles});
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk2r0jBMylhrQb9c4kuvG-zq74n8Lue-c&signed_in=true&callback=initMap">
+    </script>
+  </body>
+</html>

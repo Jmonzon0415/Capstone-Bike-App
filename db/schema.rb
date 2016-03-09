@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221182848) do
+ActiveRecord::Schema.define(version: 20160308015252) do
 
   create_table "group_rides", force: :cascade do |t|
     t.datetime "created_at",                null: false
@@ -19,11 +19,13 @@ ActiveRecord::Schema.define(version: 20160221182848) do
     t.time     "time"
     t.date     "date"
     t.text     "description", limit: 65535
-    t.string   "location",    limit: 255
     t.string   "ride_type",   limit: 255
     t.integer  "length",      limit: 4
     t.integer  "creator_id",  limit: 4
     t.string   "name",        limit: 255
+    t.string   "address",     limit: 255
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
   end
 
   create_table "user_group_rides", force: :cascade do |t|
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160221182848) do
     t.string   "first_name",             limit: 255
     t.string   "last_name",              limit: 255
     t.text     "bio",                    limit: 65535
+    t.string   "avatar",                 limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

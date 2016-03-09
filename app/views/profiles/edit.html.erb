@@ -1,0 +1,31 @@
+<h2>Edit and Update your profile here!</h2>
+
+<%= form_tag "/profiles/#{@profile.id}", method: :patch do %>
+
+       <div class= "forms">
+        <%= label_tag :first_name %>
+        <%= text_field_tag :first_name, @profile.first_name %>
+      </div>
+
+      <div class= "forms">
+        <%= label_tag :last_name %>
+        <%= text_field_tag :last_name, @profile.last_name %>
+      
+      </div>
+
+      <div class= "forms">
+        <%= label_tag  :bio %>
+        <%= text_field_tag :bio %>
+      </div> 
+
+      
+      <div class= "forms">
+        <%= file_field_tag :avatar, class: "file-control" %>
+      </div> 
+
+      
+
+      <div><%= submit_tag 'Save' %></div>
+
+
+      <% end %>

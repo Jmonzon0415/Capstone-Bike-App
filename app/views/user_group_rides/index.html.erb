@@ -1,24 +1,32 @@
+<body background="/assets/theme/bg-header.jpg">
+  
+
+
 <h4><a href="/">Home</a></h4>
 <h1>Joined These Rides: </h1>
 
 
 
-<% @joined_ride.each do |ride| %>
-
-
+ <% @joined_ride.each do |ride|  %>
 <h4>Name:</h4><a href="/group_rides/<%= ride.group_ride.id %>"><%= ride.group_ride.name %></a> </h4>
 <h4> Ride Type:</h4> <p><%= ride.group_ride.ride_type %></p>
+<h4>When:</h4> <p><%= ride.group_ride.time.strftime("%I:%M%p") %></p>
+<h4>Date:</h4> <p><%= ride.group_ride.date.strftime("%B %e, %Y") %></p>
 <h4>Created By:</h4> <p><%= ride.group_ride.creator_name  %></p>
 
    <%= form_tag "/user_group_rides/:id", method: :delete do %>
     <%= hidden_field_tag :group_ride_id, ride.id %>
-    <%= submit_tag "Leave Ride", class: "btn btn-success" %>
+    <%= submit_tag "Leave Ride", class: "btn btn-danger" %>
   <% end %>
+
+
 
 
 <br>
 
 <% end %>
+
+</body>
 
 
 

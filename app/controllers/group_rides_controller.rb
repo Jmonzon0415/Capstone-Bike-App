@@ -10,10 +10,10 @@ class GroupRidesController < ApplicationController
       name: params[:name], 
       ride_type: params[:ride_type], 
       description: params[:description],
-      location: params[:location],
       length: params[:length],
       time: params[:time],
       date: params[:date],
+      address: params[:address],
       creator_id: current_user.id,
        })
     redirect_to '/group_rides'
@@ -51,7 +51,7 @@ class GroupRidesController < ApplicationController
       name: params[:name], 
       ride_type: params[:ride_type], 
       description: params[:description],
-      location: params[:location],
+      address: params[:address],
       length: params[:length],
       time: params[:time],
       date: params[:date],

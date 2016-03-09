@@ -3,21 +3,50 @@
 <head>
   <title>BikeApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+            
+            </div class="nav-bar">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-center ">
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                       <% if current_user %>
+                    <li> 
+                        <a class="page-scroll" href="/group_rides">All Rides</a>
+                    </li>
+                      <% end %>
+                    <li>
+                        <a class="page-scroll" href="/user_group_rides">All Rides You Belong To</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/group_rides/new">Create Ride</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/users_ride">Your Created Rides</a>
+                    </li>
+                    <li>
+                       <% if current_user %>
+                        <li> <a class="page-scroll" href="/profiles/<%= current_user.id %>"><%= current_user.email %></a>  </li>
+                        <li> <a href="/users/sign_out" method="delete">Sign out</a> </li> 
+                      <% else %>
+                        <li><a href="/users/sign_in">Sign in</a></li>
+                      <% end %> 
+                    </li>
+                </ul>
+            </div>
+          </div>
       
 
 
-       
-        <% if current_user %>
-       <h3>Signed in as: <%= current_user.email %></div></h3>
-                <li> <a href="/users/sign_out" method="delete">Sign out</a> </li> 
-        <% else %>
-              <li><a href="/users/sign_in">Sign in</a></li>
-        <% end %>
+
 <%= yield %>
 
+
 </body>
+
 </html>

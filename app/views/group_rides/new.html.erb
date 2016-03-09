@@ -1,9 +1,12 @@
+<body background="/assets/theme/bg-pricing.jpg" >
+
 <h1> Create A Ride Here! </h1>
+
 
 
 <%= form_tag '/group_rides', method: :post do %>
 
- 
+
 
       <div class= "forms">
         <%= label_tag :name_of_ride %>
@@ -11,21 +14,14 @@
       </div>
 
       <div class= "forms">
-        <%= label_tag :ride_type %>
+        <%= label_tag :ride_type %> 
         <%= text_field_tag :ride_type  %>
-      
       </div>
 
       <div class= "forms">
-        <%= label_tag :description %>
-        <%= text_field_tag :description %>
+        <%= label_tag :description %>  
+        <%= text_field_tag :description  %>
       </div> 
-
-
-      <div class= "forms">
-        <%= label_tag :location %>
-        <%= text_field_tag :location %>
-      </div>
 
       
       <div class= "forms">
@@ -44,10 +40,19 @@
         <%= label_tag :date %>
         <%= text_field_tag :date %>
       </div>
+      
+      <div class= "forms">
+        <%= label_tag :address %>
+        <%= text_field_tag :address %>
+      </div>
 
-
+  
 
       <div><%= submit_tag 'Save' %></div>
 
 
       <% end %>
+
+
+  
+</body>

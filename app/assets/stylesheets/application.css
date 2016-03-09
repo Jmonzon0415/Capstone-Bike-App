@@ -10,6 +10,25 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require theme/bootstrap
+ *= require theme/animate
+ *= require simple_calendar
+ *= require theme/background
+ *= require theme/magnific-popup
+ *= require theme/owl.carousel
+ *= require theme/owl.theme
+ *= require theme/owl.transitions
+ *= require theme/vitality-aqua
+ *= require theme/vitality-blue
+ *= require theme/vitality-green
+ *= require theme/vitality-orange
+ *= require theme/vitality-pink
+ *= require theme/vitality-purple
+ *= require theme/vitality-red
+ *= require theme/vitality-tan
+ *= require theme/vitality-turquoise
+ *= require theme/vitality-yellow
+ *= require theme/font-awesome
  *= require_tree .
  *= require_self
  */

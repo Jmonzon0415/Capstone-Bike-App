@@ -1,16 +1,57 @@
-<h4><a href="/">Home</a></h4>
-
-<h1> All Group Rides </h1>
-
-
-<% @gr.each do |ride| %>
+<body background="/assets/theme/bg-pricing.jpg" >
+  
 
 
-<h4>Name:</h4> <p><a href="/group_rides/<%= ride.id %>"><%= ride.name %></a> </p></h4>
-<h4> Ride Type:</h4> <p><%= ride.ride_type %></p>
-<h4>Created By:</h4> <p><%= ride.creator_name  %></p>
-<br>
+<div class="top"><h1> All Group Rides </h1></div>
+      
+
+ <div class="all_rides">
+  <div class="row"> 
+    <div class="col-md-4">
+      <% @gr.each do |ride| %>
+           <a href="/group_rides/<%= ride.id %>"><%= ride.name %></a> </p></h4>
+          <h4> Ride Type: <%= ride.ride_type %> </h4>
+          <h4>Created By: <%= ride.creator_name  %> </h4>
+          <h4>When: <%= ride.date.strftime("%B %e, %Y") %></h4>
+          <br>
+        </div>
+  
+      <% end %>
+
+</div>
+ 
+ 
 
 
+  
 
+
+      
+   
+
+   
+  
+
+
+<div class="callender">
+  <%= month_calendar events: @gr do |date, meetings| %>
+    <%= date %>
+      <% meetings.each do |meeting| %>
+        <div>
+          <a href="/group_rides/<%= meeting.id %>"><%= meeting.name %>
+          <br>
+           at <%= meeting.time.strftime("%I:%M%p") %></a>
+        </div>
+  <% end %>
 <% end %>
+</div>
+
+
+
+
+
+
+</body>
+
+
+

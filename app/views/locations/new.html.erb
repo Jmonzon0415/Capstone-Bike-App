@@ -1,0 +1,16 @@
+<h1>Enter Location</h1>
+
+  <%= form_tag '/location', method: :post do %>
+
+ 
+
+      <div class= "forms">
+        <%= label_tag :address %>
+        <%= text_field_tag :address %>
+      </div>
+
+      <div><%= submit_tag 'Save' %></div>
+
+
+      <% end %>
+
