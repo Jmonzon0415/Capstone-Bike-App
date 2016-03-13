@@ -1,24 +1,71 @@
+
+
 <body background="/assets/theme/bg-pricing.jpg" >
+
+
   
 
 
 <div class="top"><h1> All Group Rides </h1></div>
+
+<div ng-app="app"> 
+  <div ng-controller="bikeCtrl", ng-init="setup()">
+    
+   <div class="index-search">
+    <p>Find by</p> 
+            Ride Name:  <input ng-model="nameFilter", list="names">
+    
+            Ride Length:  <input ng-model="lengthFilter", list="length">
       
+            Ride Type: <input ng-model="rideTypeFilter", list="rideType">
 
- <div class="all_rides">
-  <div class="row"> 
-    <div class="col-md-4">
-      <% @gr.each do |ride| %>
-           <a href="/group_rides/<%= ride.id %>"><%= ride.name %></a> </p></h4>
-          <h4> Ride Type: <%= ride.ride_type %> </h4>
-          <h4>Created By: <%= ride.creator_name  %> </h4>
-          <h4>When: <%= ride.date.strftime("%B %e, %Y") %></h4>
-          <br>
-        </div>
+        <datalist id="names">
+          <option ng-repeat="ride in groupRides">{{ride.name}}</option>
+        </datalist>
+        
+        <datalist id="length">
+          <option ng-repeat="ride in groupRides">{{ride.length}}</option>
+        </datalist>
   
-      <% end %>
+      <datalist id="rideType">
+          <option ng-repeat="">{{ride.ride_type}}</option>
+      </datalist>
 
+    </div>
+
+
+
+  
+
+   <div ng-repeat="ride in groupRides | filter: {name: nameFilter} | filter: { length: lengthFilter} | filter: {rideType: rideTypeFilter } | orderBy: 'name':sortByAttribute:descending">
+    <div class="all_rides">
+    <div class="row"> 
+    <div class="col-md-4">
+        <h4>{{ride.name}}</h4>
+        <h4>{{ride.ride_type}}</h4>
+        <h4>{{ride.creator_name}}</h4>
+        <h4>{{ride.date}}</h4>
+    </div>
+
+
+
+
+    </div>
+  </div>
 </div>
+
+
+  
+
+
+
+ 
+
+
+
+
+
+
  
  
 
@@ -46,6 +93,7 @@
 <% end %>
 </div>
 
+</div>
 
 
 

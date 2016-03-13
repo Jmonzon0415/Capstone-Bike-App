@@ -10,15 +10,19 @@ class GroupRide < ActiveRecord::Base
   
 
 
-  def creator_name
+  def creator_email
     creator.email 
+  end 
+
+  def creator_name
+    creator.first_name
   end 
 
   def start_time
      self.date 
-  end   
+  end  
 
-
+  
 
   
 

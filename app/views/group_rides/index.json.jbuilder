@@ -1,0 +1,1 @@
+json.array! @gr, partial: 'ride', as: :ride

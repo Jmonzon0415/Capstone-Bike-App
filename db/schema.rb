@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308015252) do
+ActiveRecord::Schema.define(version: 20160311001730) do
 
   create_table "group_rides", force: :cascade do |t|
     t.datetime "created_at",                null: false
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(version: 20160308015252) do
     t.string   "address",     limit: 255
     t.float    "latitude",    limit: 24
     t.float    "longitude",   limit: 24
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string "name", limit: 255
   end
 
   create_table "user_group_rides", force: :cascade do |t|

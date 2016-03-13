@@ -29,7 +29,9 @@ gem 'geocoder'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'owlcarousel-rails'
-gem 'carrierwave'
+gem 'carrierwave', '0.10.0'
+gem "mini_magick"
+gem "fog"
 
 
 gem 'devise' 

@@ -1,16 +1,22 @@
 Rails.application.routes.draw do
- 
-  
-
- 
+   
 
   devise_for :users
   root 'profiles#index'
+  resources :uploads
 
   get '/' => 'profiles#index'
   get '/profiles/:id' => 'profiles#show'
   get '/profiles/:id/edit' => 'profiles#edit'
   patch '/profiles/:id' => 'profiles#update'
+
+  
+  get '/uploads' => 'uploads#index'
+  get '/uploads/new' => 'uploads#new'
+  post '/uploads' => 'uploads#create'
+  get '/uploads/:id' => 'uploads#show'
+  delete '/uploads/:id' => 'uploads#destroy'
+
   
   get '/group_rides' => 'group_rides#index'
   get '/group_rides/new' => 'group_rides#new' 
