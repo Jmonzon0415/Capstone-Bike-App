@@ -1,12 +1,74 @@
 
-  <body background="/assets//Chicago1.jpg">
+  <body background="/assets/Chicago1.jpg">
+   
+    
     <header> 
       <div class="bike-icon">
         <img src="/assets/bike-icon.png" alt="">
       </div>
-      <div class="brand-name">Bike App Name TBD</div>
-    </header>
+      <div class="brand-name">One Bike Stand</div>
+    
 
+  
+  
+     
+      
+
+      <aside class="cta-quote" style="background-image: url('/assets/lake-front.jpg');">
+
+        <div class="about-web">
+        <span class="doubleUnderline"><h1> A Web Application for the Cyclist with Commitment issues </h1></span>
+          
+        <div class="landing-icons">
+              
+              <img src="/assets/pin.png" alt=""> 
+            
+  
+            <img src="/assets/sports.png" alt=""> 
+      
+          
+            <img src="/assets/interface.png" alt="">
+          
+        </div>
+          
+          
+          <p> Find, Create & Join group rides in the windy city without the hassle of being tied down to a bike club, cycle group or spandex cult <p>
+        
+     </div>
+
+
+
+
+        <% if current_user %>
+
+        <div class="reg-buttons">
+          <a class="btn btn-outline-light page-scroll" href="/users/sign_out">Sign Out</a>
+         </div>
+        
+
+        <% else %>
+        <div class="reg-buttons">
+          <a class="btn btn-outline-light page-scroll" href="/users/sign_in">Sign In</a>
+            
+            <p>OR</p>
+
+          <a class="btn btn-outline-light page-scroll" href="/users/sign_up">Sign Up</a>
+        </div>
+
+        <% end %>
+        
+       
+      </aside> 
+
+      
+        
+
+
+
+      
+
+
+    </header>
       
     </body>
 

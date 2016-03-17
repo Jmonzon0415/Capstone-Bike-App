@@ -6,4 +6,6 @@ json.time ride.time
 json.date ride.date
 json.creator_name ride.creator_name
 json.creator_email ride.creator_email
+json.creator_id ride.creator_id
 json.date ride.date.strftime("%B %e, %Y")
+json.users ride.users

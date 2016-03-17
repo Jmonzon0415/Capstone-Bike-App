@@ -13,6 +13,10 @@ class UserGroupRidesController < ApplicationController
       @joined_ride = UserGroupRide.where( status: "Joined", user_id: current_user.id )
   end 
 
+  def show  
+  end 
+
+
 
 
   def destroy

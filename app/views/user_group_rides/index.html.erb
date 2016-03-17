@@ -1,32 +1,99 @@
-<body background="/assets/theme/bg-header.jpg">
+<body background="/assets/escheresque_ste.png">
   
 
 
-<h4><a href="/">Home</a></h4>
-<h1>Joined These Rides: </h1>
+<span class="doubleUnderline"><h1>Joined These Rides</h1></span> 
+
+<div ng-app="app"> 
+  <div ng-controller="showCtrl", ng-init="setup()">
+    
+   <div class="index-search">
+    <p>Find by</p> 
+            Ride Name:  <input ng-model="nameFilter", list="names">
+    
+            Ride Length:  <input ng-model="lengthFilter", list="length">
+      
+            Ride Type: <input ng-model="rideTypeFilter", list="rideType">
+
+        <datalist id="names">
+          <option ng-repeat="ride in joinedRides">{{ride.name}}</option>
+        </datalist>
+        
+        <datalist id="length">
+          <option ng-repeat="ride in joinedRides">{{ride.length}}</option>
+        </datalist>
+  
+      <datalist id="rideType">
+          <option ng-repeat="ride in joinedRides">{{ride.ride_type}}</option>
+      </datalist>
+
+    <br>
+      
+
+      <p>Sort by: </p>
+    
+    <button ng-click="sortBy('length')">Length</button>
+    <button ng-click="sortBy('date')">Date</button>
+    <button ng-click="sortBy('users')">Popularity</button>
+   
+
+
+    </div>
 
 
 
- <% @joined_ride.each do |ride|  %>
-<h4>Name:</h4><a href="/group_rides/<%= ride.group_ride.id %>"><%= ride.group_ride.name %></a> </h4>
-<h4> Ride Type:</h4> <p><%= ride.group_ride.ride_type %></p>
-<h4>When:</h4> <p><%= ride.group_ride.time.strftime("%I:%M%p") %></p>
-<h4>Date:</h4> <p><%= ride.group_ride.date.strftime("%B %e, %Y") %></p>
-<h4>Created By:</h4> <p><%= ride.group_ride.creator_name  %></p>
-
-   <%= form_tag "/user_group_rides/:id", method: :delete do %>
+  <div class="row"> 
+   <div ng-repeat="ride in joinedRides | filter: {name: nameFilter} | filter: { length: lengthFilter}
+    | filter: { rideType: rideTypeFilter } | orderBy: 'date':sortByAttribute:descending ">
+   
+    
+    <div class="col-md-4">
+      <div class="all_rides">
+        <h4><a href="/group_rides/{{ride.id}}">{{ride.name}}</a></h4>
+        <h4>Type: <p>{{ride.ride_type}}</p></h4>
+        <h4>Creator: <p><a href="/profiles/{{ride.creator_id}}">{{ride.creator_name}}</a></p></h4>
+        <h4>When: <p>{{ride.date}}</p></h4>
+        <h4>Length: <p>{{ride.length}} Miles</p> </h4>
+        <h4>{{ride.users.length}} Joined This Ride</h4>
+         <%= form_tag "/user_group_rides/:id", method: :delete do %>
+    <% @joined_ride.each do |ride|  %>
     <%= hidden_field_tag :group_ride_id, ride.id %>
+    <% end %>
     <%= submit_tag "Leave Ride", class: "btn btn-danger" %>
-  <% end %>
-
-
-
-
-<br>
 
 <% end %>
 
-</body>
+
+
+        
+
+   
+ </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+</body> 
 
 
 

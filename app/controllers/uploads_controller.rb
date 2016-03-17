@@ -1,5 +1,4 @@
 class UploadsController < ApplicationController
-  
  
   # GET /uploads
   def index
@@ -8,6 +7,7 @@ class UploadsController < ApplicationController
  
   # GET /uploads/1
   def show
+    @upload = Upload.find_by(id: params[:id])
   end
  
   # GET /uploads/new
@@ -21,7 +21,7 @@ class UploadsController < ApplicationController
  
   # POST /uploads
   def create
-    @upload = Upload.new(name: params[:upload][:name])
+    @upload = Upload.new(name: params[:upload][:name], user_id: current_user.id)
  
     if @upload.save
       redirect_to @upload, notice: 'Upload was successfully created.'

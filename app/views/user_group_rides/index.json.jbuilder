@@ -1,0 +1,1 @@
+json.array! @joined_ride, partial: 'ride', as: :ride

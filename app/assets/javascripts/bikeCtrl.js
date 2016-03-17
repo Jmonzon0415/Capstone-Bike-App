@@ -11,7 +11,13 @@
       });
     };
 
-    console.log("Bike Ctrl Test");
+
+
+    $scope.sortBy = function(sortAttribute){
+      $scope.sortByAttribute = sortAttribute;
+      $scope.descending = !$scope.descending;
+    
+    };      
 
 
   window.scope = $scope;

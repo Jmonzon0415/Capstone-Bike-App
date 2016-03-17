@@ -1,7 +1,7 @@
 class GroupRidesController < ApplicationController
   
   def index
-    @gr = GroupRide.all 
+    @gr = GroupRide.all  
     end
 
   

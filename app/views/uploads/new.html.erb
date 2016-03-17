@@ -1,15 +1,23 @@
- 
+<body background="/assets/lake-front.jpg" >
+
+ <div class="upload-form">
 <h1>New Upload</h1>
  
  <%= form_for(@upload) do |f| %>
   <div>
-    <%= f.label :name %><br>
+    <%= f.label :Avatar %><br>
     <%= f.file_field :name %>
   </div>
   <div>
+    <br>
     <%= f.submit %>
   </div>
 <% end %>
+</div>
 
+  
+
+
+</body>
  
 
