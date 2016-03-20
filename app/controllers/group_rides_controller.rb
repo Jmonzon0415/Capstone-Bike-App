@@ -21,15 +21,16 @@ class GroupRidesController < ApplicationController
 
 
   def new 
+    @date = params[:date]
   end 
+
+
 
   def user_show_page
-    @rides = GroupRide.where(creator_id: current_user)
+    @rides = GroupRide.where(creator_id: current_user.id)
   end 
 
-  def joined_rides_show
-    @ride = GroupRide.where 
-  end
+
 
 
 
@@ -64,7 +65,7 @@ class GroupRidesController < ApplicationController
   def destroy 
     @ride = GroupRide.find_by(id: params[:id])
     @ride.destroy
-  redirect_to '/'
+  redirect_to '//users_ride'
   end
 
 

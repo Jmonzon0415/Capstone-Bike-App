@@ -8,6 +8,19 @@ def show
   @upload = Upload.find_by(user_id: @profile.id)
 end
 
+def joined_rides_show
+  @profile = User.find_by(id: params[:id])
+  @joined_rides = UserGroupRide.where( status: "Joined", user_id: @profile.id )
+
+end 
+
+def created_rides_show
+  @profile = User.find_by(id: params[:id])
+  @created_rides = GroupRide.where( creator_id: @profile.id )
+
+end 
+
+
 
 def edit
  @profile = User.find_by(id: current_user.id)

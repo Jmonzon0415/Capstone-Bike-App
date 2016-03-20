@@ -1,11 +1,23 @@
+<h1>Hello</h1>
+
+
+
 <body background="/assets/escheresque_ste.png">
+
+  
   
 
+<span class="doubleUnderline"><h1><%= @profile.first_name %> Joined These Rides</h1></span>  
 
-<span class="doubleUnderline"><h1>Joined These Rides</h1></span> 
+
+
 
 <div ng-app="app"> 
-  <div ng-controller="showCtrl", ng-init="setup()">
+  <div ng-controller="profileCtrl", ng-init="setup()">
+
+    <script>
+    window.profileId = <%= @profile.id %>
+    </script>
     
    <div class="index-search">
     <p>Find by</p> 
@@ -46,7 +58,7 @@
 
 
   <div class="row"> 
-   <div ng-repeat="ride in joinedRides | filter: {name: nameFilter} | filter: { length: lengthFilter}
+   <div ng-repeat="ride in groupRides | filter: {name: nameFilter} | filter: { length: lengthFilter}
     | filter: { rideType: rideTypeFilter } | orderBy: 'date' |orderBy:sortByAttribute:descending ">
    
     
@@ -59,7 +71,7 @@
         <h4>Length: <p>{{ride.length}} Miles</p> </h4>
         <h4>{{ride.users.length}} Joined This Ride</h4>
          <%= form_tag "/user_group_rides/:id", method: :delete do %>
-    <% @joined_ride.each do |ride|  %>
+    <% @joined_rides.each do |ride|  %>
     <%= hidden_field_tag :group_ride_id, ride.id %>
     <% end %>
     <%= submit_tag "Leave Ride", class: "btn btn-danger" %>
@@ -93,6 +105,18 @@
 </div>
 
 </div>
+
+
+
+</body> 
+
+
+
+
+
+
+
+
 
 
 

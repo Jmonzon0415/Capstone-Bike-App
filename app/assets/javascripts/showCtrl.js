@@ -15,10 +15,11 @@
 
     
 
-    $scope.sortBy = function(sortAttribute){
-     $scope.sortAttribute =! $scope.descending;
-     $scope.sortByAttribute = sortAttribute;
-      }; 
+   $scope.sortBy = function(sortAttribute){
+      $scope.sortByAttribute = sortAttribute;
+      $scope.descending = !$scope.descending;
+    
+    };     
 
 
   window.scope = $scope;

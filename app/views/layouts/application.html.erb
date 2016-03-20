@@ -27,12 +27,9 @@
                         <a class="page-scroll" href="/user_group_rides">All Rides You Belong To</a>
                     </li>
                     
-                    <li>
-                        <a class="page-scroll" href="/group_rides/new">Create Ride</a>
-                    </li>
                     
                     <li>
-                        <a class="page-scroll" href="/users_ride">Your Created Rides</a>
+                        <a class="page-scroll" href="/profiles/<%= current_user.id %>/created_rides">Your Created Rides</a>
                     </li>
 
                       <% end %>

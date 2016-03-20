@@ -4,7 +4,7 @@
   <div class="create-form">
 
 
-<h1> Create A Ride </h1>
+<h1> Create A Ride for <%= @date %> </h1>
 
 
 
@@ -39,11 +39,11 @@
         <%= text_field_tag :time %>
       </div>
 
-
-      <div class= "forms">
-        <%= label_tag :date %>
-        <%= text_field_tag :date %>
-      </div>
+      
+      
+    
+        <%= hidden_field_tag :date, value: @date %>
+ 
       
       <div class= "forms">
         <%= label_tag :address %>

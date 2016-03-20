@@ -1,0 +1,1 @@
+json.array! @created_rides, partial: 'created', as: :created

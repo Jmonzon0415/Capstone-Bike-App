@@ -1,63 +1,78 @@
 
+<body background="/assets/escheresque_ste.png">
 
-<body background="/assets/footer_lodyas.png" >
-
-  <div class="top"><h1> All Group Rides </h1></div>
-
-    <div ng-app="app"> 
-     <div ng-controller="bikeCtrl", ng-init="setup()">
   
-    <div class="index-search">
-      <p>Find by</p> 
+  
+
+<span class="doubleUnderline"><h1><%= @profile.first_name %> Created These Rides</h1></span>  
+
+
+
+
+<div ng-app="app"> 
+  <div ng-controller="createCtrl", ng-init="setup()">
+
+    <script>
+    window.profileId = <%= @profile.id %>
+    </script>
+    
+   <div class="index-search">
+    <p>Find by</p> 
             Ride Name:  <input ng-model="nameFilter", list="names">
     
             Ride Length:  <input ng-model="lengthFilter", list="length">
       
             Ride Type: <input ng-model="rideTypeFilter", list="rideType">
-      <datalist id="names">
-        <option ng-repeat="ride in groupRides">{{ride.name}}</option>
-      </datalist>
+
+        <datalist id="names">
+          <option ng-repeat="ride in joinedRides">{{ride.name}}</option>
+        </datalist>
         
-      <datalist id="length">
-        <option ng-repeat="ride in groupRides">{{ride.length}}</option>
-      </datalist>
+        <datalist id="length">
+          <option ng-repeat="ride in joinedRides">{{ride.length}}</option>
+        </datalist>
   
       <datalist id="rideType">
-        <option ng-repeat="ride in groupRides">{{ride.ride_type}}</option>
+          <option ng-repeat="ride in joinedRides">{{ride.ride_type}}</option>
       </datalist>
+   
 
-    <br>
+
     </div>
+
+    
+    <br>
+    
+
 
 
       <p>Sort by: </p>
     
-      <button ng-click="sortBy('length')">Length</button>
-      <button ng-click="sortBy('date')">Date</button>
-      <button ng-click="sortBy('users')">Popularity</button> 
-      
-
-      
+    <button ng-click="sortBy('length')">Length</button>
+    <button ng-click="sortBy('date')">Date</button>
+    <button ng-click="sortBy('users')">Popularity</button>
 
 
-    
 
-
-  
   <div class="row"> 
    <div ng-repeat="ride in groupRides | filter: {name: nameFilter} | filter: { length: lengthFilter}
-    | filter: { rideType: rideTypeFilter } | orderBy: 'date' |orderBy:sortByAttribute:descending">
+    | filter: { rideType: rideTypeFilter } | orderBy: 'date' |orderBy:sortByAttribute:descending ">
    
     
     <div class="col-md-4">
       <div class="all_rides">
         <h4><a href="/group_rides/{{ride.id}}">{{ride.name}}</a></h4>
         <h4>Type: <p>{{ride.ride_type}}</p></h4>
-        <h4>Creator: <p><a href="/profiles/{{ride.creator_id}}">{{ride.creator_name}}</a></p></h4>
         <h4>When: <p>{{ride.date}}</p></h4>
         <h4>Length: <p>{{ride.length}} Miles</p> </h4>
         <h4>{{ride.users.length}} Joined This Ride</h4>
-    </div>
+     
+
+        
+
+   
+ </div>
+
 
 
 
@@ -67,8 +82,22 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
 <div class="callender">
-  <%= month_calendar events: @gr do |date, meetings| %>
+  <%= month_calendar events: @created_rides do |date, meetings| %>
     <%= date.strftime("%m/%d/%Y") %>
     <br>
     <a href="/group_rides/new/<%= date.strftime("%b %d, %Y") %>"><img src="/assets/plus.png" alt="">   </a>
@@ -80,6 +109,7 @@
            at <%= meeting.time.strftime("%I:%M%p") %></a>
         </div>
 
+
  
   </div>
 
@@ -90,8 +120,23 @@
 
 
 
+</body> 
 
-</body>
+
+
+
+
+
+
+
+
+
+
+</body> 
+
+
+
+
 
 
 

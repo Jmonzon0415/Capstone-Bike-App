@@ -9,11 +9,11 @@ class UserGroupRidesController < ApplicationController
   end
 
   
-  def index  
+  def index       
       @joined_ride = UserGroupRide.where( status: "Joined", user_id: current_user.id )
   end 
 
-  def show  
+  def show      
   end 
 
 

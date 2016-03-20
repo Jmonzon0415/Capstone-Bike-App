@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/' => 'profiles#index'
   get '/profiles/:id' => 'profiles#show'
   get '/profiles/:id/edit' => 'profiles#edit'
+  get '/profiles/:id/joined_rides' => "profiles#joined_rides_show"
+  get '/profiles/:id/created_rides' => 'profiles#created_rides_show'
   patch '/profiles/:id' => 'profiles#update'
 
   
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
 
   
   get '/group_rides' => 'group_rides#index'
-  get '/group_rides/new' => 'group_rides#new' 
+  get '/group_rides/new/:date' => 'group_rides#new' 
   post '/group_rides' => 'group_rides#create'
   get 'group_rides/:id' => 'group_rides#show'
   get 'group_rides/:id/edit' => 'group_rides#edit'

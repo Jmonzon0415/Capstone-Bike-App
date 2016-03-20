@@ -18,11 +18,13 @@ body {
 
 
 #map {
-        position: fixed;
+        position: relative;
         height: 60%;
         width: 50%;
-        left: 40%;
-        bottom: 80%;
+        float: right;
+        margin-top: 7%;
+        margin-right: 15%;
+     
         border: 4px #74d600 solid;
 
 }
@@ -52,16 +54,26 @@ a {
 
 
  .show-ride {
-         position: static;  
+         position: relative;  
           
-         margin-right: 60%;
+         float: left;
+         margin-top: 5%;
+         margin-left: 5%;
          text-align: center;
          color: white;
+        
+        a  {
+            color: white;
+        }
+
+
         }     
 
 
 .profile-show {
 
+    margin-top: 3%;
+    position: absolute;
     text-align: center;
     border: 3px solid grey;
     background-color: white;
@@ -69,6 +81,7 @@ a {
     width: 30%;
     height: 60%;
     border-radius: 25px;
+    margin-left: 10%;
 
 
     img { 
@@ -114,6 +127,12 @@ a {
     margin: 10px 0px 20px 0px;
     background-color: white;
     opacity: 0.9;
+    
+    p {
+
+        font-size: 10px;
+        color: grey;
+    }
 
     
 }
@@ -238,6 +257,32 @@ a {
 
 }
 
+
+}
+
+
+.profile-buttons { 
+    
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 50%;
+    margin-left: 50%;
+
+    width: 40%;
+
+
+    .btn {
+    
+    font-size: 40px;
+    border: 5px solid white;
+    opacity: 0.9;
+    margin-bottom: 5px;
+
+    p {
+
+    }
+
+}
 
 
 }
