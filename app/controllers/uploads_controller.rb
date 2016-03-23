@@ -22,9 +22,10 @@ class UploadsController < ApplicationController
   # POST /uploads
   def create
     @upload = Upload.new(name: params[:upload][:name], user_id: current_user.id)
+
  
     if @upload.save
-      redirect_to @upload, notice: 'Upload was successfully created.'
+      redirect_to '/', notice: 'Upload was successfully created.'
     else
       render :new
     end

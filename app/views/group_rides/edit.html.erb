@@ -1,53 +1,67 @@
-<body background="/assets/theme/bg-pricing.jpg" >
+<body background="/assets/footer_lodyas.png" >
 
 
-
-<%= form_tag "/group_rides/#{@ride.id}", method: :patch do %>
-
-       <div class= "forms">
-        <%= label_tag :name %>
-        <%= text_field_tag :name, @ride.name %>
-      </div>
-
-      <div class= "forms">
-        <%= label_tag :ride_type %>
-        <%= text_field_tag :ride_type, @ride.ride_type  %>
-      
-      </div>
-
-      <div class= "forms">
-        <%= label_tag :description %>
-        <%= text_field_tag :description, @ride.description %>
-      </div> 
+  <div class="create-form">
 
 
-      <div class= "forms">
-        <%= label_tag :location %>
-        <%= text_field_tag :location, @ride.location %>
-      </div>
+<h1> Create A Ride for <%= @ride.name %> </h1>
+      <div class="form-horizontal">
+          <%= form_tag '/group_rides', method: :post do %>
+              <div class="row" >
+                  
+                <div class= "forms col-xs-12 col-md-3 center-text col-md-offset-3">
+                  <%= label_tag :name_of_ride %>
+                  <%= text_field_tag :name %>
+                </div>
 
-      
-      <div class= "forms">
-        <%= label_tag :length %>
-        <%= text_field_tag :length, @ride.length %>
-      </div>
+                <div class= "forms col-xs-12 col-md-3">
+                  <%= label_tag :address %>
+                  <%= text_field_tag :address %>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class= "col-xs-12 col-md-3 center-text col-md-offset-3 row">
+                  <div class="forms col-md-12">
+                    <%= label_tag :length_in_miles %>
+                    <%= number_field_tag(:length) %>
+                    </div>
+                    
+                
+                <div class= "forms col-md-12">
+                    <%= label_tag :ride_type %> 
+                </div>
+                    <div class= "forms col-md-12">
+                      <%= select_tag(:ride_type, options_for_select([ ['Beer Ride', 'Beer Ride'],['Casual', 'Casual'],['Road Race', 'Road Race'],['Sweat Session', 'Sweat Session']])) %>
+                    </div>
 
 
-      <div class= "forms">
-        <%= label_tag :time %>
-        <%= text_field_tag :time, @ride.time %>
-      </div>
+              
+                  <div class= "forms col-md-12">
+                    <%= label_tag :time %>
+                  </div>
+                    <div class= "forms col-md-12">
+                    <%= time_field(:time, :started_at) %>
+                  </div>
+                </div>
+                
+
+                <div class= "forms col-xs-12 col-md-3 center-text">
+                    <%= label_tag :description %>  
+                    <%= text_area_tag(:description, " ",size: "24x5.5") %>
+                </div> 
+
+            </div>
+
+              <br>
+          <%= hidden_field_tag :date, value: @date %>
+          <%= submit_tag 'Save', class: "save-button" %>
+                    
+                    <% end %>
+        </div>
+    </div>
+  
 
 
-      <div class= "forms">
-        <%= label_tag :date %>
-        <%= text_field_tag :date, @ride.date %>
-      </div>
-
-
-
-      <div><%= submit_tag 'Save' %></div>
-
-
-      <% end %>
-<% body %>
+  
+</body>

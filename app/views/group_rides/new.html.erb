@@ -1,63 +1,66 @@
-<body background="/assets/theme/bg-pricing.jpg" >
+<body background="/assets/footer_lodyas.png" >
 
 
   <div class="create-form">
 
 
 <h1> Create A Ride for <%= @date %> </h1>
+      <div class="form-horizontal">
+          <%= form_tag '/group_rides', method: :post do %>
+              <div class="row" >
+                  
+                <div class= "forms col-xs-12 col-md-3 center-text col-md-offset-3">
+                  <%= label_tag :name_of_ride %>
+                  <%= text_field_tag :name %>
+                </div>
+
+                <div class= "forms col-xs-12 col-md-3">
+                  <%= label_tag :address %>
+                  <%= text_field_tag :address %>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class= "col-xs-12 col-md-3 center-text col-md-offset-3 row">
+                  <div class="forms col-md-12">
+                    <%= label_tag :length_in_miles %>
+                    <%= number_field_tag(:length) %>
+                    </div>
+                    
+                
+                <div class= "forms col-md-12">
+                    <%= label_tag :ride_type %> 
+                </div>
+                    <div class= "forms col-md-12">
+                      <%= select_tag(:ride_type, options_for_select([ ['Beer Ride', 'Beer Ride'],['Casual', 'Casual'],['Road Race', 'Road Race'],['Sweat Session', 'Sweat Session']])) %>
+                    </div>
 
 
+              
+                  <div class= "forms col-md-12">
+                    <%= label_tag :time %>
+                  </div>
+                    <div class= "forms col-md-12">
+                    <%= time_field(:time, :started_at) %>
+                  </div>
+                </div>
+                
 
-<%= form_tag '/group_rides', method: :post do %>
+                <div class= "forms col-xs-12 col-md-3 center-text">
+                    <%= label_tag :description %>  
+                    <%= text_area_tag(:description, " ",size: "24x5.5") %>
+                </div> 
 
+            </div>
 
-
-      <div class= "forms">
-        <%= label_tag :name_of_ride %>
-        <%= text_field_tag :name %>
-      </div>
-
-      <div class= "forms">
-        <%= label_tag :ride_type %> 
-        <%= text_field_tag :ride_type  %>
-      </div>
-
-      <div class= "forms">
-        <%= label_tag :description %>  
-        <%= text_field_tag :description  %>
-      </div> 
-
-      
-      <div class= "forms">
-        <%= label_tag :length_in_miles %>
-        <%= text_field_tag :length %>
-      </div>
-
-
-      <div class= "forms">
-        <%= label_tag :time %>
-        <%= text_field_tag :time %>
-      </div>
-
-      
-      
-    
-        <%= hidden_field_tag :date, value: @date %>
- 
-      
-      <div class= "forms">
-        <%= label_tag :address %>
-        <%= text_field_tag :address %>
-      </div>
-
+              <br>
+          <%= hidden_field_tag :date, value: @date %>
+          <%= submit_tag 'Save', class: "save-button" %>
+                    
+                    <% end %>
+        </div>
+    </div>
   
-
-      <div><%= submit_tag 'Save' %></div>
-
-
-      <% end %>
-
-</div>
 
 
   

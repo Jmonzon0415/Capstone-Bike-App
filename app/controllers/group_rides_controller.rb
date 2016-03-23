@@ -11,7 +11,7 @@ class GroupRidesController < ApplicationController
       ride_type: params[:ride_type], 
       description: params[:description],
       length: params[:length],
-      time: params[:time],
+      time: params[:time][:started_at],
       date: params[:date],
       address: params[:address],
       creator_id: current_user.id,
@@ -65,7 +65,7 @@ class GroupRidesController < ApplicationController
   def destroy 
     @ride = GroupRide.find_by(id: params[:id])
     @ride.destroy
-  redirect_to '//users_ride'
+  redirect_to '/group_rides'
   end
 
 

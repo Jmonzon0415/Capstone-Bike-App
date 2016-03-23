@@ -1,8 +1,8 @@
 class GroupRide < ActiveRecord::Base
   geocoded_by :address
    
-  validates_presence_of :time, :date, :name, :description, :ride_type, :length, :address 
-  validates :length, numericality: true
+  # validates_presence_of :time, :date, :name, :description, :ride_type, :length, :address 
+  # validates :length, numericality: true
   after_validation :geocode
 
   belongs_to :creator, class_name: "User" 

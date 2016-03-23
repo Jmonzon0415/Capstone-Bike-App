@@ -71,8 +71,12 @@
   <%= month_calendar events: @gr do |date, meetings| %>
     <%= date.strftime("%m/%d/%Y") %>
     <br>
+    
+    <% if date > Time.now %>
     <a href="/group_rides/new/<%= date.strftime("%b %d, %Y") %>"><img src="/assets/plus.png" alt="">   </a>
      <p>create ride</p>
+     <% end %> 
+    
       <% meetings.each do |meeting| %>
         <div>
           <a href="/group_rides/<%= meeting.id %>"><%= meeting.name %>
